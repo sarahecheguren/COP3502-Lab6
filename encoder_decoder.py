@@ -5,6 +5,7 @@ def print_menu():
 2. Decode
 3. Quit\n""")
 
+
 def encode(password_string):
     """This function encodes a password by moving each digit of the password up by three numbers."""
     encoded_pass_string = ""
@@ -13,6 +14,7 @@ def encode(password_string):
         encoded_num_int = (num_int + 3) % 10
         encoded_pass_string += str(encoded_num_int)
     return encoded_pass_string
+
 
 def decode(encoded_password):
     """This function decodes a password by moving each digit of the password down by three numbers."""
@@ -23,8 +25,11 @@ def decode(encoded_password):
         decoded_pass_string += str(decoded_num_int)
     return decoded_pass_string
 
+
 def main():
     run = True
+    # added variable here so I can have access to it in elif option==str(2):
+    encoded_password = None
     while run == True:
         print_menu()
         option = input("Please enter an option: ")
@@ -36,6 +41,12 @@ def main():
             encoded_password = encode(password)
             print("Your password has been encoded and stored!\n")
             continue
-        
+        # option == str(2): added by Alvaro Flores
+        elif option == str(2):
+            decoded_password = decode(encoded_password)
+            print(
+                f'The encoded password is {encoded_password}, and the original password is {decoded_password}.')
+
+
 if __name__ == "__main__":
     main()
